@@ -24,6 +24,9 @@ function update_ssh_port {
 }
 
 
+function system_install_imagemagick {
+  apt-get -y install imagemagick
+}
 function system_install_logrotate {
   apt-get -y install logrotate
 }
@@ -149,6 +152,9 @@ gem install bundler
 
 log "Update SSH port"
 update_ssh_port
+
+log "Install imagemagick"
+system_install_imagemagick
 
 log "Restarting Services"
 restartServices
