@@ -17,14 +17,16 @@ function log {
   echo "### $1 -- `date '+%D %T'`"
 }
 
+function update_ssh_port {
+  sed -i "s/Port 22/Port $PORT/" /etc/ssh/ssh_config
+  iptables -A INPUT -p tcp -m tcp --dport $PORT -j ACCEPT
+  iptables-save
+}
+
+
 function system_install_logrotate {
   apt-get -y install logrotate
 }
-
-function update_ssh_port {
-  echo "    Port $SSH_PORT" >> /etc/ssh/ssh_config
-}
-
 
 function set_default_environment {
   cat >> /etc/environment << EOF
