@@ -2,7 +2,7 @@
 
 ## Where to find it
 
-You can find the lastest version of this script on Linode library https://manager.linode.com/stackscripts/edit/7423
+You can find the lastest version of this script on Linode library https://www.linode.com/stackscripts/view/?StackScriptID=7423
 
 ## Install and configure:
 
