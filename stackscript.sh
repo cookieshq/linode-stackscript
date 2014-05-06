@@ -18,7 +18,7 @@ function log {
 }
 
 function update_ssh_port {
-  sed -i "s/Port 22/Port $PORT/" /etc/ssh/ssh_config
+  sed -i "s/Port 22/Port $PORT/" /etc/ssh/sshd_config
   iptables -A INPUT -p tcp -m tcp --dport $PORT -j ACCEPT
   iptables-save
 }
