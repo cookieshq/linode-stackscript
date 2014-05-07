@@ -18,6 +18,9 @@ function log {
 }
 
 function update_ssh_port {
+  # Ensure iptables-save persists across reboots
+  aptitude -y install iptables-persistent
+
   sed -i "s/Port 22/Port $SSH_PORT/" /etc/ssh/sshd_config
   iptables -A INPUT -p tcp -m tcp --dport $SSH_PORT -j ACCEPT
   iptables-save
