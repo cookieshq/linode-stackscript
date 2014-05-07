@@ -18,8 +18,8 @@ function log {
 }
 
 function update_ssh_port {
-  sed -i "s/Port 22/Port $PORT/" /etc/ssh/sshd_config
-  iptables -A INPUT -p tcp -m tcp --dport $PORT -j ACCEPT
+  sed -i "s/Port 22/Port $SSH_PORT/" /etc/ssh/sshd_config
+  iptables -A INPUT -p tcp -m tcp --dport $SSH_PORT -j ACCEPT
   iptables-save
 }
 
@@ -46,7 +46,7 @@ function create_deployment_user {
 
 function install_essentials {
   aptitude -y install build-essential libpcre3-dev libssl-dev libcurl4-openssl-dev libreadline5-dev libxml2-dev libxslt1-dev libmysqlclient-dev openssh-server git-core
-  good_stuff
+  goodstuff
 }
 
 function set_nginx_boot_up {
@@ -128,7 +128,7 @@ usermod -a -G rvm "$DEPLOY_USER"
 source /etc/profile.d/rvm.sh
 source /etc/profile
 
-log "Installing Ruby 1.9.3-$RUBY_RELEASE"
+log "Installing Ruby $RUBY_RELEASE"
 rvm install $RUBY_RELEASE
 rvm use $RUBY_RELEASE --default
 
