@@ -57,7 +57,7 @@ function set_nginx_boot_up {
   chmod 744 /etc/init.d/nginx
   /usr/sbin/update-rc.d -f nginx defaults
   cat > /etc/logrotate.d/nginx << EOF
-/usr/local/nginx/logs/* {
+/usr/local/nginx/logs/*.log {
   daily
   missingok
   rotate 52
